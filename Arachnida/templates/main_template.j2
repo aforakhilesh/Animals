@@ -1,0 +1,223 @@
+{% macro Infobox(Species,iucn,image,order,family,genus,species) %}
+	{{'{{taxobox'}}
+	|name   = {{Species}}
+    {%- if iucn != 'NaN' %}
+    | status  = {{iucn}}
+    {%- endif -%}
+    | status_system = IUCN3.1
+    {%- if image != "NaN" -%}
+    | image      = {{image}}
+    {%- endif -%}
+    | ordo = {{order}}
+    | familia = {{family}}
+    | regnum            = [[జంతువులు]]
+    | phylum             = [[అరాక్నిడ్స్]]
+    | genus = {{genus}}
+    | species = {{species}}
+	{{'}}\n'}}
+{% endmacro -%}
+
+{%- macro Intro(Species,Biogeographic_Regions,other_regions,habitat_regions,terrestrial_biomes,aquatic_biomes,wetlands,other_habitat_features) -%}
+
+{%- if Species != "NaN" -%}
+    {{Species}} అరాక్నిడ్స్ జాతికి చెందినవి.{{" "}}
+{%- endif -%}
+
+{{Species}} అనేది వీటి శాస్త్రీయ నామము.{{" "}}
+
+{%- if Biogeographic_Regions != "NaN" -%}
+    {{Species}} ఎక్కువగా {{Biogeographic_Regions}} ప్రాంతాలలో జీవిస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if habitat_regions != "NaN" -%}
+    ఇవి {{habitat_regions}} ప్రదేశాలను వాటి నివాస ప్రాంతాలుగా మార్చుకుంటాయి.{{" "}}
+{%- endif -%}
+
+{%- if terrestrial_biomes != "NaN" -%}
+    {{terrestrial_biomes}}లో ఇవి ఎక్కువగా కనిపిస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if aquatic_biomes != "NaN" -%}
+    ఇవి {{aquatic_biomes}}లో కూడా తమ జీవనాన్ని గడుపుతాయి.{{" "}}
+{%- endif -%}
+
+{%- if other_regions != "NaN" -%}
+    ఇవి {{other_regions}}లో కూడా తమ జీవనాన్ని గడుపుతాయి.{{" "}}
+{%- endif -%}
+
+అన్ని అరాక్నిడ్‌లకు ఎనిమిది కాళ్లు ఉంటాయి. వీటికి కీటకాలలా యాంటెన్నా ఉండదు. అరాక్నిడ్‌లకు వాటి శరీరం వెలుపల గట్టి, షెల్ లాంటి కవర్ కలిగి ఉంటుంది. దానిని "ఎక్సోస్కెలిటన్" అని అంటారు. ఈ జంతువులు పరిసరాలచే తమ దేహ ఉష్ణోగ్రత మార్చుకోగలవు.
+{{"\n"}}
+{%- endmacro -%}
+
+{%- macro PC(Species,pc,Species_e)-%}
+{%- if pc != "NaN" -%}
+{{pc}}<ref name="{{Species_e}}">[{{url}} {{Species_e}}]</ref>
+{%- endif -%}
+
+{%- endmacro -%}
+
+{%- macro Behaviour(Species,diet,animal_diet,plant_diet,predators,com_channels,behaviour,reproduction,independence_avg,child_avg,gest_avg,foraging_behaviour,anti_predator) -%}
+{{'\n==ప్రవర్తన==\n'}}
+
+{%- if diet != "NaN" -%}
+    {{Species}} {{diet}} జీవనాన్ని గడుపుతాయి. 
+{%- endif -%}
+
+{%- if behaviour != "NaN" -%}
+    ఇవి {{behaviour}} జంతువులు.{{" "}}
+{%- endif -%}
+
+{%- if animal_diet != "NaN" -%}
+    {{Species}} {{animal_diet}}ను తమ ప్రధాన ఆహరంగా భావిస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if plant_diet != "NaN" -%}
+    {{Species}} {{plant_diet}} కూడా తింటాయి.{{" "}}
+{%- endif -%}
+
+{%- if predators != "NaN" -%}
+వీటికి సహజ ప్రెడేటర్స్:
+{% for values in predators %}
+* {{values}}
+{% endfor %}
+{%- endif -%}
+
+{%- if anti_predator != "NaN" -%}
+    {{Species}} ప్రెడేటర్స్ నుంచి కాపడుకోడానికి {{anti_predator}}వంటి పరిణామాత్మకమైన అనుసరణలను చూపిస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if "Year-round breeding" in reproduction -%}
+ఇవి సంవత్సరం పొడవూ సంతానొత్పత్తి చెయ్యగలవు.{{" "}}
+{%- endif -%}
+
+{%- if "Oviparous" in reproduction -%}
+{{Species}} అండాశయ లక్షణములు గల జీవులు.{{" "}}
+{%- endif -%}
+
+{%- if "Gonochoric" in reproduction -%}
+వీటిలో ఆడ, మగ రెండు కలవు.{{" "}}
+{%- endif -%}
+
+{%- if "Sexual" in reproduction -%}
+ఈ జంతువులకి లైంగిక పునరుత్పత్తి చెయ్యగలిగే సామర్థ్యం ఉంది.{{" "}}
+{%- endif -%}
+
+{%- if "Seasonal breeding" in reproduction -%}
+ఇవి సంవత్సరంలో నిర్దిష్ట సమయాల్లో మాత్రమే విజయవంతంగా జతకట్టకలవు.{{" "}}
+{%- endif -%}
+
+{%- if "Semelparous" in reproduction -%}
+{{Species}} తమ జీవితంలో కేవలం ఒక్కసారి సంతానోత్పత్తి చెయ్యగలవు.{{" "}}
+{%- endif -%}
+
+{%- if "Viviparous" in reproduction -%}
+{{Species}} పిండాశయ లక్షణములు గల జీవులు.{{" "}}
+{%- endif -%}
+
+{%- if "Asexual" in reproduction -%}
+{{Species}} అలైంగిక పునరుత్పత్తి చేస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if "Iteroparous" in reproduction -%}
+ఇవి తమ జీవితంలో అనేక సార్లు సంతానోత్పత్తి చేయగలిగే సామర్ధ్యం ఉంది.{{" "}}
+{%- endif -%}
+
+{%- if foraging_behaviour != "NaN" -%}
+ఇవి {{foraging_behaviour}} ద్వారా ఆహారాన్ని నిల్వ చేస్తాయి.{{" "}}
+{%- endif -%}
+
+{%- if com_channels != "NaN" -%}
+ఈ జీవులు సంభాషించడానికి {{com_channels}} మార్గాలను వాడతాయి.{{" "}}
+{%- endif -%}
+
+{%- if child_avg != "NaN" -%}
+{%- if child_avg > 1 -%}
+ఇవి ఒకటే సారి {{child_avg|trim('.0')}} పిల్లలను పొదగగలవు.{{" "}}
+{%- endif -%}
+{%- if child_avg == 1 -%}
+ఇవి ఒకటే సారి ఒక పిల్లను పొదగగలవు.{{" "}}
+{%- endif -%}
+{%- endif -%}
+
+{%- if gest_avg != "NaN" -%}
+{%- if gest_avg < 1440 -%}
+{{Species}} గర్భధారణ సమయం సుమారుగా {{gest_avg}} గంటలు ఉంటుంది.{{" "}}
+{%- endif -%}
+{%- if gest_avg >= 1440 -%}
+{{Species}} గర్భధారణ సమయం సుమారుగా {{(gest_avg/1440)|trim('.0')}} రోజులు ఉంటుంది.{{" "}}
+{%- endif -%}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro preservation(Species,lifespan_avg,iucn) -%}
+
+{{'\n==పరిరక్షణ==\n'}}
+
+{%- if lifespan_avg != "NaN" -%}
+{{Species}} సుమారుగా {{lifespan_avg}} సంవత్సరాలు బ్రతుకుతాయి.{{" "}}
+{%- endif -%}
+ఇంటర్నేషనల్ యూనియన్ ఫర్ కన్జర్వేషన్(IUCN)<ref name="IUCN">[https://www.iucnredlist.org/ IUCN]</ref>ఆఫ్ నేచర్ అనేది ప్రకృతి పరిరక్షణ, సహజ వనరుల వినియోగం రంగంలో పనిచేస్తున్న అంతర్జాతీయ సంస్థ.{{" "}}
+{%- if iucn != "NaN" -%}
+{{Species}}ను IUCNలో {{iucn}}గా వర్గీకరించారు.{{" "}}
+{%- endif -%}
+
+{%- if iucn == "LT"  or iucn == "LC" -%}
+అడవిలో ఈ జంతువు జాతి సంఖ్య ఇప్పటికీ చాలా ఎక్కువ ఉంది.{{" "}}
+{%- endif -%}
+{%- if iucn == "VU" -%}
+ఈ జంతువులు జీవిస్తున్న పరిస్థితులు మెరుగుపడకపోతే అంతరించిపోవడానికి అవకాశం ఎక్కువగా ఉంది.{{" "}}
+{%- endif -%}
+{%- if iucn == "EX" -%}
+ఈ జంతువులు భూమి నుంచి అంతరించిపోయాయి.{{" "}}
+{%- endif -%}
+{%- if iucn == "EW" -%}
+ఈ జంతువులు అడవిలో కాకుండా కేవలం బందిఖానాలో  జీవిస్తున్నాయి.{{" "}}
+{%- endif -%}
+{%- if iucn == "CR" -%}
+భూమి పైన ఈ జంతువుల సంఖ్య 50 కన్నా తక్కువ ఉన్నాయి.{{" "}}
+{%- endif -%}
+{%- if iucn == "NT" -%}
+భవిష్యత్తులో వీటి సంఖ్య ప్రమాదంలో పడవొచ్చు.{{" "}}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- macro impact(Species,good,bad,eco_impact) -%}
+{{'\n==మానవ సంబంధం==\n'}}
+{%- if eco_impact != "NaN" -%}
+{{Species}} {{eco_impact}}తో పర్యావరణ వ్యవస్థకి ఉపయోగపడుతాయి.{{" "}}
+{%- endif -%}
+{%- if bad != "NaN" -%}
+{{Species}} {{bad}}.{{" "}}
+{%- endif -%}
+{%- if good != "NaN" -%}
+ఈ జీవులని {{good}} కోసం మానవులు వాడతారు. {{" "}}
+{%- endif -%}
+{{"\n"}}
+{%- endmacro -%}
+
+{%- macro ref(order, iucn) -%}
+{{'\n==మూలాలు==\n'}}
+[[Category: తెవికీ జంతువులు]]
+[[Category: అరాక్నిడ్స్]]
+[[Category: జంతువులు]]
+
+{%- if iucn != "NaN" -%}
+[[Category: {{iucn}} జంతువులు]]
+{%- endif -%}
+
+[[Category: {{order}}]]
+{%- endmacro -%}
+
+{{- Infobox(Species,iucn,image,order,family,genus,species) -}}
+
+{{- Intro(Species,Biogeographic_Regions,other_regions,habitat_regions,terrestrial_biomes,aquatic_biomes,wetlands,other_habitat_features) -}}
+
+{{- PC(Species,pc, Species_e) -}}
+
+{{- Behaviour(Species,diet,animal_diet,plant_diet,predators,com_channels,behaviour,reproduction,independence_avg,child_avg,gest_avg,foraging_behaviour,anti_predator) -}}
+
+{{- preservation(Species,lifespan_avg,iucn) -}}
+
+{{- impact(Species,good,bad,eco_impact) -}}
+
+{{- ref(order, iucn) -}}
