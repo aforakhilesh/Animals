@@ -96,10 +96,10 @@ def main():
 	
 	#remove this to generate articles for all movies
 	names = mammalsDF.Species.tolist()
-	names = names[:]
+	names = names[50:100]
 
 	# Initiate the file object
-	fobj = open('reptiles.xml', 'w')
+	fobj = open('reptiles_50.xml', 'w')
 	fobj.write(tewiki+'\n')
 
 	# Give the page_id from which you want to generate the articles in

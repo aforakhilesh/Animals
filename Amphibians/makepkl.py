@@ -3,7 +3,7 @@ import pandas as pd
 
 # Makes a .pkl file which can be for loading data into the template
 def main():
-    File = 'amphibians.csv'
+    File = 'amphibians_edited.csv'
     DF = pd.read_csv(File)
     DF = DF.fillna('NaN')
     pickle.dump(DF, open('./123.pkl', 'wb'))

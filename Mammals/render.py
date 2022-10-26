@@ -96,7 +96,7 @@ def main():
 	
 	#remove this to generate articles for all movies
 	names = mammalsDF.Species.tolist()
-	names = names[0:4245]
+	names = names[120:170]#[0:4245]
 
 	# Initiate the file object
 	fobj = open('mammals_50.xml', 'w')

@@ -11,7 +11,7 @@ def getData(row):
 	data = {
 		'Species_e':row.Species_e.values[0],
 		'Species':row.Species.values[0],
-		'common_name':row.common_name.values[0],
+		'common_name':row.cn.values[0],
 		# 'image':row.images.values[0],
 		# 'class':row.Class.values[0],
 		'pc':row.pc.values[0],
@@ -67,7 +67,7 @@ def getData(row):
 		# 'lifespan_low':row.lifespan_low.values[0],
 		# 'lifespan_high':row.lifespan_high.values[0],
 		'behaviour':row.behaviour.values[0],
-		'url':row.url.values[0]
+		'url':row.URL.values[0]
 	}
 	g = str(row.Species.values[0]).split()[0]
 	s = str(row.Species.values[0]).split()[1]
@@ -96,10 +96,10 @@ def main():
 	
 	#remove this to generate articles for all movies
 	names = mammalsDF.Species.tolist()
-	names = names[:]
+	names = names[0:50]
 
 	# Initiate the file object
-	fobj = open('insects.xml', 'w')
+	fobj = open('insects_50.xml', 'w')
 	fobj.write(tewiki+'\n')
 
 	# Give the page_id from which you want to generate the articles in
